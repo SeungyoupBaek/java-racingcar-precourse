@@ -14,13 +14,28 @@ public class RacingCar {
         return new RacingCar(name, 0);
     }
 
+    public Integer getPosition() {
+        return position;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPositionString() {
+        StringBuilder positionString = new StringBuilder();
+
+        for (int i = 0; i < position; i++) {
+            positionString.append("-");
+        }
+
+        return positionString.toString();
+    }
+
     public void move(int i) throws IllegalArgumentException {
         if (i > STOP_MAX_VALUE) {
             position += MOVE_DISTANCE;
         }
     }
 
-    public Integer getPosition() {
-        return position;
-    }
 }
