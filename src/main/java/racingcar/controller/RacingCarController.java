@@ -6,25 +6,34 @@ import racingcar.util.ValidationUtils;
 import racingcar.view.RacingCarView;
 
 public class RacingCarController {
+    public static final String INPUT_SPLIT_SEPARATOR = ",";
     private static String racingCarNamesInput;
     private static String playCount;
 
     public static void intro() {
         // 경주할 자동차 이름(쉼표 기준으로 구분)
         RacingCarView.printRacingCarNamePhrase();
+        introNameCheck();
+
+        // 시도할 회수 입력
+        RacingCarView.printPlayCountPhrase();
+        introNumberCheck();
+
+        play();
+    }
+
+    private static void introNameCheck() {
         boolean nameCheck = false;
         while (!nameCheck) {
             nameCheck = inputNameCheck();
         }
+    }
 
-        // 시도할 회수 입력
-        RacingCarView.printPlayCountPhrase();
+    private static void introNumberCheck() {
         boolean numberCheck = false;
         while (!numberCheck) {
             numberCheck = inputNumberCheck();
         }
-
-        play();
     }
 
     private static boolean inputNameCheck() {
@@ -49,7 +58,7 @@ public class RacingCarController {
 
     public static void play() {
         // 자동차 이름 쉼표기준으로 구분
-        String[] racingCarNames = racingCarNamesInput.split(",");
+        String[] racingCarNames = racingCarNamesInput.split(INPUT_SPLIT_SEPARATOR);
         // 자동차 생성
         RacingCars racingCars = RacingCars.fromNames(racingCarNames);
 
