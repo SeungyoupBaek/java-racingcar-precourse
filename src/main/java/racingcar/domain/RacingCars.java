@@ -17,22 +17,18 @@ public class RacingCars {
 
     public static RacingCars fromNames(String[] racingCarNames) {
         RacingCars racingCars = new RacingCars();
+
         for (String racingCarName: racingCarNames) {
             // 입력값 체크
             ValidationUtils.validName(racingCarName);
             racingCars.racingCarList.add(RacingCar.getFromName(racingCarName));
         }
+
         return racingCars;
     }
 
     public List<RacingCar> getRacingCarList() {
         return racingCarList;
-    }
-
-    public void move() {
-        for (RacingCar racingCar : racingCarList) {
-            racingCar.move(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
-        }
     }
 
     public String getWinner() {
@@ -53,6 +49,12 @@ public class RacingCars {
     private void checkWinner(RacingCar racingCar, StringBuilder winner, int longestDistance) {
         if (racingCar.getPosition() == longestDistance) {
             winner.append(racingCar.getName()).append(", ");
+        }
+    }
+
+    public void move() {
+        for (RacingCar racingCar : racingCarList) {
+            racingCar.move(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
         }
     }
 

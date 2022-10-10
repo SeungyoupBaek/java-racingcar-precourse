@@ -9,6 +9,8 @@ public class RacingCarView {
     public static final String PLAY_COUNT_PHRASE = "시도할 회수는 몇회인가요?";
     public static final String RESULT_PHRASE = "실행 결과";
     public static final String FINAL_WINNER_PHRASE = "최종 우승자 : ";
+    public static final String NAME_ERROR_PHRASE = "[ERROR] 자동차 이름은 5자 이내여야 한다.";
+    public static final String NUMBER_ERROR_PHRASE = "[ERROR] 시도 횟수는 숫자여야 한다.";
 
     public static void printWinner(String winner) {
         System.out.println(FINAL_WINNER_PHRASE + winner);
@@ -22,6 +24,7 @@ public class RacingCarView {
         for (RacingCar racingCar : racingCars) {
             System.out.println(racingCar.getName() + " : " + racingCar.getPositionString());
         }
+
         System.out.println();
     }
 
@@ -34,10 +37,10 @@ public class RacingCarView {
     }
 
     public static void printNameError() {
-        System.out.println("[ERROR] 자동차 이름은 5자 이내여야 한다.");
+        System.out.println(NAME_ERROR_PHRASE);
     }
 
     public static void printNumberError() {
-        System.out.println("[ERROR] 시도 횟수는 숫자여야 한다.");
+        System.out.println(NUMBER_ERROR_PHRASE);
     }
 }
